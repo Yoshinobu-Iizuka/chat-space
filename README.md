@@ -1,6 +1,6 @@
 # README
 
-## menbersテーブル
+## membersテーブル
 |Column|Type|Options|
 |------|----|-------|
 |user_id|integer|null: false, foreign_key: true|
@@ -17,14 +17,11 @@
 |name|string|index: true,null: false|
 |email|string|null: false foreign_key: true|
 |password|string|null: false|
-|message_id|integer|null: false, foreign_key: true|
-|menber_id|integer|null: false, foreign_key: true|
-|group_id|integer|null: false, foreign_key: true|
-|timestamp|datetime|null: false|
+
 
 ### Association
-- has_many :menbers
-- has_many :groups, through: :menbers
+- has_many :members
+- has_many :groups, through: :members
 - has_many :messages
 
 ## messagesテーブル
@@ -35,7 +32,6 @@
 |image|text|null: false|
 |user_id|integer|null: false, foreign_key: true|
 |group_id|integer|null: false, foreign_key: true|
-|timestamp|datetime|null: false|
 
 ### Association
 - belongs_to :user
@@ -47,16 +43,12 @@
 |name|string|index: true, null: false|
 |message_id|integer|null: false, foreidn_key: ture|
 |user_id|integer|null: false, foreidn_key: ture|
-|menber_id|integer|null: false, foreidn_key: ture|
+|member_id|integer|null: false, foreidn_key: ture|
 
 ### Association
 - hasmany_to :messages
-- hasmany_to :menbers
-- hasmeny_to :users, through: :menbers
-
-
-
-
+- hasmany_to :members
+- hasmany_to :users, through: :members
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
