@@ -44,6 +44,6 @@
 
 
 ### Association
-- hasmany_to :messages
-- hasmany_to :members
-- hasmany_to :users, through: :members
+- hasmany :messages
+- hasmany :members
+- hasmany :users, through: :members
