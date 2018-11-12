@@ -1,0 +1,33 @@
+.information  チャットグループが作成されました。
+
+.chat-side
+  .chat-side__user テスト
+  .chat-side__user__new
+    %ul.chat-side__user__icon
+      %li.chat-side__user__icon
+      = link_to "" do
+        = fa_icon 'pencil-square-o', class: 'chat-side__user__icon'
+      %li.chat-side__user__icon
+      = link_to "" do
+        = fa_icon 'cog', class: 'chat-side__user__icon'
+  .chat-side__group
+    .chat-side__group__name sampleグループ
+    .chat-side__group__message testtesttest
+
+.chat-main
+  .chat-main__group
+    %input.edit-btn{type: "submit", value: "edit"}
+    .chat-main__group__name sample
+    .chat-main__group__user ryousukemaehira
+  .chat-main__body
+    .chat-main__body__name ryousukemaehira
+    .chat-main__body__name__timestamp 2016/10/12 06:27:14
+    .chat-main__body__comment なるほど
+    .chat-main__body__name ryousukemaehira
+    .chat-main__body__name__timestamp 2016/10/12 06:27:14
+    .chat-main__body__comment なるほど
+
+  .chat-footer
+    .chat-footer__form
+      %i.fa.fa-image.chat-footer__icon
+    %input.chat-footer__send-btn{type: 'submit', value: 'Send'}
