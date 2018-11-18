@@ -2,7 +2,12 @@
 @import "./reset";
 @import "./variable";
 @import "./information";
+@import "config/chat";
 @import "./chat-side";
 @import "./chat-main";
 @import "./chat-footer";
-
+@import "./user";
+@import "config/colors";
+@import "./flash";
+@import "./group";
+@import "config/side-bar";

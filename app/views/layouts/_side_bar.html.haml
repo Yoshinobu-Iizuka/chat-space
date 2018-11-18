@@ -1,18 +1,21 @@
-/ .information  チャットグループが作成されました。
-
 .chat-side
-  .chat-side__user テスト
+  .chat-side__user
+    =current_user.name
   .chat-side__user__new
     %ul.chat-side__user__icon
       %li.chat-side__user__icon
-      = link_to "" do
-        = fa_icon 'pencil-square-o', class: 'chat-side__user__icon'
+        = link_to new_group_path  do
+          = fa_icon 'pencil-square-o', class: 'chat-side__user__icon'
       %li.chat-side__user__icon
-      = link_to "" do
-        = fa_icon 'cog', class: 'chat-side__user__icon'
+        = link_to edit_user_path(current_user) do
+          = fa_icon 'cog', class: 'chat-side__user__icon'
   .chat-side__group
-    .chat-side__group__name sampleグループ
-    .chat-side__group__message testtesttest
+    - current_user.groups.each do |group|
+      = link_to group_messages_path(group) do
+        .chat-side__group__name
+          = group.name
+        .chat-side__group__message
+          メッセージはまだありません。
 
 .chat-main
   .chat-main__group
