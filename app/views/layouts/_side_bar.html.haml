@@ -30,7 +30,11 @@
     .chat-main__body__name__timestamp 2016/10/12 06:27:14
     .chat-main__body__comment なるほど
 
-  .chat-footer
-    .chat-footer__form
-      %i.fa.fa-image.chat-footer__icon
-    %input.chat-footer__send-btn{type: 'submit', value: 'Send'}
+.form
+  = form_for '', html: { class: 'js-form' } do |f|
+    = f.text_field :content, class: 'form__message js-content', placeholder: 'type a message'
+    .form__mask
+      = f.label :image, class: 'form__mask__image' do
+        = fa_icon 'picture-o', class: 'icon'
+        = f.file_field :image, class: 'hidden js-file'
+    = f.submit 'Send', class: 'form__submit'
