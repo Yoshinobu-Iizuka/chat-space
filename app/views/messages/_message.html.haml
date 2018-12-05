@@ -1,0 +1,8 @@
+.chat-main__body__name
+  = message.user.name
+.chat-main__body__name__timestamp
+  = message.created_at
+.chat-main__body__comment
+  - if message.content.present?
+    = message.content
+  = image_tag message.image.url, class: 'image' if message.image.present?
