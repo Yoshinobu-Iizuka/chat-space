@@ -1,43 +1,40 @@
-$(function() {
-   function buildHTML(message){
-    var html = `<p class="chat-main__body__name">${message.user_name}</p>
-                <p class="chat-main__body__name__timestamp">${message.created_at}</p>
-                <p class="chat-main__body__comment">${message.content}</p>`
-    return html;
+$(document).on('turbolinks:load', function() {
+  var buildHTML = function(message) {
+  if ( message.image ) {
+    var html =
+    `<div class="chat-main__body__name">${message.user_name}</div>
+    <div class="chat-main__body__name__timestamp">${message.created_at}</div>
+    <div class="chat-main__body__comment">${message.content}</div>
+    <div class="image">${message.image}</div>`
+  } else {
+    var html =
+     `<div class="chat-main__body__name">${message.user_name}</div>
+    <div class="chat-main__body__name__timestamp">${message.created_at}</div>
+    <div class="chat-main__body__comment">${message.content}</div>`
   }
-   function buildImageHTML(message){
-    var html = `<p class="chat-main__body__name">${message.user_name}</p>
-                <p class="chat-main__body__name__timestamp">${message.created_at}</p>
-                <p class="chat-main__body__comment">${message.content}</p>
-                <img src='${message.image.url}'>`
     return html;
-  }
-   $('.form__message js-content').on('submit', function(e){
+  };
+  $('#new_message').on('submit', function(e){
     e.preventDefault();
     var formData = new FormData(this);
-    var url = $(this).attr('action');
     $.ajax({
-      url: url,
-      type: 'POST',
+      url: './messages',
+      type: "POST",
       data: formData,
       dataType: 'json',
       processData: false,
       contentType: false
     })
-    .done(function(data){
-      if (data.image.url == null) {
-        var html = buildHTML(data);
-      }
-      else {
-        var html = buildImageHTML(data);
-      }
-      $('.messages').append(html)
-      $('.form__message js-content').val('');
-      $(".messages").animate({scrollTop: $('.messages')[0].scrollHeight});
-      $('.form__submit').prop("disabled", false);
-    })
-    .fail(function(){
-      alert('error');
-    })
-  })
+     .done(function(data){
+       var html = buildHTML(data);
+       $('.chat-main__body').append(html);
+       $('.chat-main__body').animate({scrollTop: $('.chat-main__body')[0].scrollHeight}, 2000, 'swing');
+       $('form')[0].reset();
+     })
+      .fail(function(){
+        alert('error');
+      });
+      return false;
+  });
 })
+
