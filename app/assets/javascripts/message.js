@@ -17,6 +17,7 @@ $(document).on('turbolinks:load', function() {
   $('#new_message').on('submit', function(e){
     e.preventDefault();
     var formData = new FormData(this);
+    var chatMain = '.chat-main__body'
     $.ajax({
       url: './messages',
       type: "POST",
@@ -27,8 +28,8 @@ $(document).on('turbolinks:load', function() {
     })
      .done(function(data){
        var html = buildHTML(data);
-       $('.chat-main__body').append(html);
-       $('.chat-main__body').animate({scrollTop: $('.chat-main__body')[0].scrollHeight}, 2000, 'swing');
+       $(chatMain).append(html);
+       $(chatMain).animate({scrollTop: $(chatMain)[0].scrollHeight}, 2000, 'swing');
        $('form')[0].reset();
      })
       .fail(function(){
