@@ -30,9 +30,9 @@ $(function(){
           data: { name: input },
           dataType: 'json'
       })
-        .done(function(users) {
+      .done(function(users) {
       user_list.empty();
-        if (users.length !==0) {
+        if (users.length !=0) {
         users.forEach(function(user){
               appendUser(user);
             })
