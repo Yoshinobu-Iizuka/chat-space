@@ -24,7 +24,8 @@
       =@group.name
     .chat-main__group__user
       Menber:
-      =current_user.name
+      -@group.users.each do |user|
+        =user.name
   .chat-main__body
     = render @messages
 
