@@ -33,13 +33,12 @@ $(function(){
         .done(function(users) {
       user_list.empty();
         if (users.length !==0) {
-          users.forEach(function(user){
+        users.forEach(function(user){
               appendUser(user);
             })
+        }else{
+        appendNoUser("一致するメンバーがいません");
         }
-          else{
-            appendNoUser("一致するメンバーがいません");
-          }
       })
       .fail(function(){
           alert('error');
@@ -49,7 +48,7 @@ $(function(){
       $(this).parent().remove();
       var user_id = $(this).attr("data-user-id");
       var user_name = $(this).attr("data-user-name");
-        appendGroupUser(user_id, user_name);
+      appendGroupUser(user_id, user_name);
     })
     $(document).on("click",".user-search-remove",function(){
       $("#chat-group-user-8").remove();
