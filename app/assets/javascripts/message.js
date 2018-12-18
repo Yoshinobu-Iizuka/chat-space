@@ -51,7 +51,6 @@ $(document).on('turbolinks:load', function() {
       var insertHTML = '';
       messages.forEach(function(message){
         insertHTML += buildHTML(message);
-        console.log(message);
       });
       $(chatMain).append(insertHTML);
       $(chatMain).animate({scrollTop: $(chatMain)[0].scrollHeight}, 2000, 'swing');
